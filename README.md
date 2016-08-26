@@ -2,7 +2,7 @@
 Write a program to read a postfix expression and compute its value (all variables are single letters of type integer and their value must be entered by the user)
 
 ###Sample I/O
-
+--
 
 Enter a postfix expression with a $ at the end: ab*ac+$
 
