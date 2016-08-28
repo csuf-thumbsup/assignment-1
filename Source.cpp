@@ -64,7 +64,6 @@ void process_deque(deque<char> charlist, unordered_map<char, char> dict)
 		// found i to be an operation
 		if (charlist[i] == '+' || charlist[i] == '-' || charlist[i] == '/' || charlist[i] == '*')
 		{
-
 			//grab the 2 top digits
 			int operand1 = (charlist.front() - '0');
 			charlist.pop_front();
@@ -77,8 +76,13 @@ void process_deque(deque<char> charlist, unordered_map<char, char> dict)
 			cout << "operand1: " << operand1 << endl;
 			cout << "operand2: " << operand2 << endl;
 
+			char op = charlist[i];
+			cout << "op: ";
+			cout << op << endl;
+
+
 			// we eval the 2 numbers and convert back to type<char> implicitly
-			int result = eval_operation(charlist[i], operand1, operand2);
+			int result = eval_operation(op, operand1, operand2);
 			cout << "eval result: ";
 			cout << result << endl;
 
@@ -87,7 +91,8 @@ void process_deque(deque<char> charlist, unordered_map<char, char> dict)
 			
 			charlist.push_front(result);
 
-			//i -= 1;
+			i = 1;
+
 		}
 		else // found i to be a char[a-z]
 		{
