@@ -91,7 +91,7 @@ void process_deque(deque<char> charlist, unordered_map<char, char> dict)
 			
 			charlist.push_front(result);
 
-			i = 1;
+			i = 1; //reset i? errors with indexing...
 
 		}
 		else // found i to be a char[a-z]
