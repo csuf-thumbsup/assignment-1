@@ -54,7 +54,7 @@ void process_expression(string expression)
 				// Prompt user for the value of "expression[i]"
 				cout << "\nEnter the value of " << expression[i] << ": ";
 				cin >> char_value;
-				int_value = char_value - '0'; 
+				int_value = char_value - '0'; // quick way to convert from char to int
 
 				// push int_value to the stack 
 				resultlist.push(int_value);
