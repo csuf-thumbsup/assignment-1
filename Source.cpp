@@ -80,13 +80,21 @@ void process_expression(string expression)
 }
 
 int main() {
-	string user_input;
-	
-	// Get user postfix expression
-	cout << "Enter a postfix expression with a $ at the end: " << endl;
-	getline(cin, user_input);
 
-	process_expression(user_input);
+	char user_input = 'y';
+
+	while (true)//user_input == 'y')
+	{
+		string postfix_expression;
+		// Get user postfix expression
+		cout << "Enter a postfix expression with a $ at the end: " << endl;
+		getline(cin, postfix_expression);
+
+		process_expression(postfix_expression);
+
+		//cout << "\nContinue (y/n)? ";
+		//cin >> user_input;
+	}
 
 	return 0;
 }
