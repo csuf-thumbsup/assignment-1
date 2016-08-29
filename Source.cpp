@@ -75,26 +75,38 @@ void process_expression(string expression)
 	}
 
 	// there should only be one value left in the stack which is the final value
-	cout << "Final Value: " << resultlist.top() << endl;
+	if(!resultlist.empty())
+		cout << "Final Value: " << resultlist.top() << endl;
 
 }
 
-int main() {
+void repeat_prompt()
+{
+	char user_input;
+	// prompt for repeat
+	cout << "\nContinue (y/n)? ";
+	cin >> user_input;
 
-	char user_input = 'y';
-
-	while (true)//user_input == 'y')
+	if (user_input == 'n')
+		exit(0);
+	else if (user_input != 'y')
 	{
-		string postfix_expression;
+		cout << "Incorrect input. Try again." << endl;
+		repeat_prompt();
+	}
+}
+
+int main() {
+	string postfix_expression;
+
+	while (true)
+	{
 		// Get user postfix expression
 		cout << "Enter a postfix expression with a $ at the end: " << endl;
 		getline(cin, postfix_expression);
 
 		process_expression(postfix_expression);
 
-		//cout << "\nContinue (y/n)? ";
-		//cin >> user_input;
+		repeat_prompt();
 	}
-
-	return 0;
 }
