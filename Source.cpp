@@ -71,12 +71,13 @@ void process_expression(string expression)
 				resultlist.push(int_value);
 			}
 		}
+		// base case - there should only be one value left in the stack which is the final value
+		else if (expression[i] = '$' && !resultlist.empty())
+		{
+			cout << "Final Value: " << resultlist.top() << endl;
+		}
 
 	}
-
-	// there should only be one value left in the stack which is the final value
-	if(!resultlist.empty())
-		cout << "Final Value: " << resultlist.top() << endl;
 
 }
 
