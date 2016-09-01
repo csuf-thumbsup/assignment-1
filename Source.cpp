@@ -1,6 +1,6 @@
 /* CPSC 323 - Assignment #1
- * Names: Rogelio Negrete, Ivan Vu, Angelo Salac
- */
+* Names: Rogelio Negrete, Ivan Vu, Angelo Salac
+*/
 
 #include <iostream>
 #include <string>
@@ -19,7 +19,7 @@ int eval_operation(char operation, int operand1, int operand2)
 		return operand1 * operand2;
 	else if (operation == '/')
 		return operand1 / operand2;
-	else 
+	else
 	{
 		cout << "Unexpected Error \n";
 		return -1;
@@ -39,11 +39,11 @@ void process_expression(string expression)
 			int operand1 = resultlist.top(); resultlist.pop();
 			int operand2 = resultlist.top(); resultlist.pop();
 
-			//push computed value back onto stack
+			// push computed value back onto stack
 			resultlist.push(eval_operation(expression[i], operand1, operand2));
 
 		}
-		// found to be a char[a-z] ... ignore the $ and spaces
+		// found to be a char[a-z]
 		else if (expression[i] >= 'a' && expression[i] <= 'z')
 		{
 			// check if current element is NOT in our dict
@@ -54,21 +54,15 @@ void process_expression(string expression)
 				// Prompt user for the value of "expression[i]"
 				cout << "\nEnter the value of " << expression[i] << ": ";
 				cin >> char_value;
-				int_value = char_value - '0'; // quick way to convert from char to int
-
-				// push int_value to the stack 
-				resultlist.push(int_value);
-
-				// store into our dict for future use
-				dict.emplace(expression[i], int_value);
+				int_value = char_value - '0'; // quick way to convert from char to int			
+				resultlist.push(int_value); // push int_value to the stack 
+				dict.emplace(expression[i], int_value); // store into our dict for future use
 			}
 			else // current element is in our dict
 			{
-				// find our match in the dict
-				int int_value = dict.find(expression[i])->second;
-
-				// push int_value to the stack 
-				resultlist.push(int_value);
+				
+				int int_value = dict.find(expression[i])->second; // find our match in the dict
+				resultlist.push(int_value); // push int_value to the stack 
 			}
 		}
 		// base case - there should only be one value left in the stack which is the final value
@@ -76,7 +70,7 @@ void process_expression(string expression)
 		{
 			cout << "Final Value: " << resultlist.top() << endl;
 		}
-
+		
 	}
 
 }
@@ -84,7 +78,6 @@ void process_expression(string expression)
 void repeat_prompt()
 {
 	char user_input;
-	// prompt for repeat
 	cout << "\nContinue (y/n)? ";
 	cin >> user_input;
 
@@ -102,12 +95,9 @@ int main() {
 
 	while (true)
 	{
-		// Get user postfix expression
-		cout << "Enter a postfix expression with a $ at the end: " << endl;
-		getline(cin, postfix_expression);
-
+		cout << "Enter a postfix expression with a $ at the end: ";
+		cin >> postfix_expression;
 		process_expression(postfix_expression);
-
 		repeat_prompt();
 	}
 }
